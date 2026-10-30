@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage academic deadlines, assignments, tests and examinations".>
+    <title>Academic Deadline and Assesment Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="site-header">
+
+        <div class="container header-content">
+            <div class="brand">
+                <span class="brand-icon" aria-hidden="true"></span>
+            </div>
+            <h1> Academic Planner</h1>
+            <p> ITM 1131|Muni University</p>
+        </div>
+
+        <nav aria-label="Main navigation">
+
+            <a href="#dashboard">Dashboard</a>
+            <a href="#deadlines">Deadlines</a>
+            <a href="#add-deadline">Add Deadline</a>
+
+        </nav>
+
+    </header>
+    <main class="container">
+
+        <section class="hero" aria-labelledby="welcome-heading">
+
+
+            <div>
+                <p class="eyebrow">STUDY SMATER</p>
+                <h2 id="welcome-heading">Academic Deadline and Assessment Planner</h2>
+
+                <p Organise your coursework,track upcoming assessments and stay ahead of every deadline.></p>
+
+            </div>
+
+            <div class="hero-icon" aria-hidden="true"></div>
+        </section>
+
+        <section id="dashboard" class="section">
+            <div class="section-heading">
+
+                <div>
+                    <h2>Overwrite</h2>
+                    <p>Your academic progress at a glance.</p>    
+                </div>
+                <span id="today-date" class="date-label">Today's date</span>
+            </div>
+
+            <div class="summary-grid">
+                <article class="summary-card">
+                    <span class="summary-icon" aria-hidden="true"></span>
+
+                    <p>Total assessments</p>
+                    <p id="total-count" class="summary-number">0</p>
+
+                </article>
+
+                <article class="summary-card">
+                    
+                    <span class="summary-icon" aria-hidden="true"></span>
+                    <p>Upcoming tasks</p>
+                    <p id="upcoming-count" class="summary-number">0</p>
+
+                </article>
+
+                <article class="summary-card">
+                    
+                    <span class="summary-icon" aria-hidden="true"></span>
+                    <p>Overdue tasks</p>
+                    <p id="overdue-count" class="summary-number">0</p>
+
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-icon" aria-hidden="true"></span>
+
+                    <p>Completed tasks</p>
+                    <p id="completed-count" class="summary-number">0</p>
+
+                </article>
+            </div>
+        </section>
+
+        <section id="deadlines" class="section">
+           
+            <div class="section-heading">
+               
+                <div>
+                    <h2>Assessment deadlines</h2>
+                    <p>Search, filter, sort and update your sample records.</p>
+                </div>
+            </div>
+            
+            
+            <div class="filter-panel">
+                <div class="filter-grid">
+                    <div class="form-group">
+                        <label for="search-input">Search assessments</label>
+                        
+                        <input
+                        type="search"
+                        id="search-input"
+                        placeholder="Search course or title...">
+                    
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type-filter">Assessment type</label>
+                        <select id="type-filter">
+                            
+                            <option value="">All types</option>
+                            <option value="Assignment">Assignment</option>
+
+                            <option value="Test">Test</option>
+                            <option value="Presentation">Presentation</option>
+
+                            <option value="Examination">Examination</option>
+
+                            <option value="Project">Project</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status-filter">Status</label>
+                        <select id="status-filter">
+                            <option value="">All statuses</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sort-filter">Sort by</label>
+                        <select id="sort-filter">
+                            <option value="date-asc">Nearest deadline</option>
+                            <option value="date-desc">Furthest deadline</option>
+                            <option value="course">Course name</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-heading">
+            
+                <p id="results-count" aria-live="polite">Loading assessments...</p>
+                <button id="reset-filters" class="button button-light" type="button">Reset filters</button>
+            
+            </div>
+
+            <div id="assessment-list" class="assessment-grid"></div>
+
+        </section>
+
+        <section id="add-deadline" class="section form-section">
+            <div class="section-heading">
+                
+                <div>
+                    <h2>Add an assessment</h2>
+                    <p>Add a new item to your personal sample plan.</p>
+                </div>
+            
+            </div>
+
+            <form id="deadline-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="assessment-title">Assessment title*</label>
+
+                        <input
+                        type="text"
+                        id="assessment-title"
+                        name="title"
+                        minlength="3"
+                        maxlength="100"
+                        placeholder="e.g. HTML practical assignment"
+                        required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assessment-type">Assessment type*</label>
+                        
+                        <select id="assessment-type" name="type" required>
+                            <option value="">Select type</option>
+                            <option value="Assignment">Assignment</option>
+                            <option value="Test">Test</option>
+                            <option value="Presentation">Presentation</option>
+                            <option value="Examination">Examination</option>
+                            <option value="Project">Project</option>
+                        </select>
+                    
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deadline-date">Deadline date*</label>
+
+                        <input
+                        type="date"
+                        id="deadline-date"
+                        name="deadline" 
+                        required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assessment-priority">Priority*</label>
+                        <select id="assessment-priority" name="priority" required>
+
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Low">Low</option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assessment-notes">Notes(optional)</label>
+
+                        <input
+                        type="text"
+                        id="assessment-notes"
+                        name="notes"
+                        maxlength="200"
+                        placeholder="Additional instructions">
+
+                    </div>
+                
+                </div>
+                
+                <button type="submit" class="button button-primary">+Add assessment</button>
+
+                <p id="form-message" class="feedback" role="status" aria-live="polite"></p>
+
+            </form>
+        </section>
+
+        <section class="tips-section">
+            <h2>Study tips</h2>
+            <ul>
+                <li>Start assignments early to avoid last-minute pressure.</li>
+                <li>Check your deadlines regurarly.</li>
+                <li>Mark an assessment as completed after finishing it.</li>
+                <li>prioritise overdue tasks and assessments due soon.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>ITM|Academic Deadline and Assessment Planner</p>
+            <p>Muni University coursework demonstration. Sample data only.</p>
+            <p>&copy;2026 Academic Planner</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
